@@ -18,11 +18,11 @@ Threadmonitoring(args)
 
 Example args:
 1. Monitor 1 servicename with 1 threadname
-- args = "Servicename : Threadname"
+args = "Servicename : Threadname"
 2. Monitor multiple servicenames with a threadname
-- args = "Servicename : Threadname, Servicename2 : Threadname2, etc..."
+args = "Servicename : Threadname, Servicename2 : Threadname2, etc..."
 3. Monitor 1 Servicename with all threads
-- args = "Servicename" <- to monitor all threads
+args = "Servicename" <- to monitor all threads
 
 	Also threadname is wildcarded before and after the given threadname
 
