@@ -17,12 +17,12 @@ You can change the last line in Threadmon.ps1 and change the function args to mo
 Threadmonitoring(args)
 
 Example args:
-1. Monitor 1 servicename with 1 threadname
-args = "Servicename : Threadname"
+1. Monitor 1 servicename with 1 threadname <
+<br />args = "Servicename : Threadname"
 2. Monitor multiple servicenames with a threadname
-args = "Servicename : Threadname, Servicename2 : Threadname2, etc..."
+<br />args = "Servicename : Threadname, Servicename2 : Threadname2, etc..."
 3. Monitor 1 Servicename with all threads
-args = "Servicename" <- to monitor all threads
+<br />args = "Servicename" <- to monitor all threads
 
 	Also threadname is wildcarded before and after the given threadname
 
