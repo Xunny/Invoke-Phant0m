@@ -1,35 +1,35 @@
-# Invoke-Phant0m
-This script walks thread stacks of Event Log Service process (spesific svchost.exe) and identify Event Log Threads to kill Event Log Service Threads. So the system will not be able to collect logs and at the same time the Event Log Service will appear to be running.
+# Threadmonitor
+This script walks thread stacks of Event Log Service process (specifically svchost.exe) and identify Event Log Threads to monitor Log Service Threads. 
+With this script splunk will be able to collect knowledge if event Log threads are killed even when the Event Log Service will appear to be running. 
 
-I have made this script for two reasons. First, This script will help to Red Teams and Penetration Testers. Second, I want to learn Powershell and Low-Level things on Powershell for cyber security field.
+I've edited the script of Halil DALABASMAZ in order to detect the Phant0m script which is also created by Halil DALABASMAZ (https://github.com/hlldz, https://twitter.com/hlldz).
 
 # Usage
 
 ```
-PS C:\> Invoke-Phant0m
-        _                 _    ___
-  _ __ | |__   __ _ _ __ | |_ / _ \ _ __ ___
- | '_ \| '_ \ / _` | '_ \| __| | | | '_ ` _ \
- | |_) | | | | (_| | | | | |_| |_| | | | | | |
- | .__/|_| |_|\__,_|_| |_|\__|\___/|_| |_| |_|
- |_|
+PS C:\> .\Threadmon.ps1
 
-
-[!] I'm here to blur the line between life and death...
-
-[*] Enumerating threads of PID: 1000...
-[*] Parsing Event Log Service Threads...
-[+] Thread 1001 Succesfully Killed!
-[+] Thread 1002 Succesfully Killed!
-[+] Thread 1003 Succesfully Killed!
-[+] Thread 1004 Succesfully Killed!
-
-[+] All done, you are ready to go!
 ```
-# Technical Details
+
+# Technical Details of Threadmon
+You can change the last line in Threadmon.ps1 and change the function args to monitor threads by your choice.
+
+Threadmonitoring(args)
+
+Example args:
+Monitor 1 servicename with 1 threadname
+- args = "Servicename : Threadname"
+Monitor multiple servicenames with a threadname
+- args = "Servicename : Threadname, Servicename2 : Threadname2, etc..."
+Monitor 1 Servicename with all threads
+- args = "Servicename" <- to monitor all threads
+
+	Also threadname is wildcarded before and after the given threadname
+
+# Technical Details of Phant0m
 https://artofpwn.com/phant0m-killing-windows-event-log.html
 
-# Video
+# Video of Phant0m
 [![PoC Video](https://i.ytimg.com/vi/PF0-tZWCmpc/maxresdefault.jpg)](https://www.youtube.com/watch?v=PF0-tZWCmpc)
 
 
