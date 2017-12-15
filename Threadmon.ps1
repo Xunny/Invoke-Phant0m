@@ -1094,7 +1094,7 @@ $intro = @'
 
 $threadlist += @"
 {
-    "threadid"     :   "$($ThreadIds[$i])",
+    "threadid"      :   "$($ThreadIds[$i])",
     "processid"     :   "$($TProcessIds[$i])",
     "waitreason"    :   "$($tWaitReason[$i])",
     "addrpc"        :   "$($TAddrPCs[$i])",
@@ -1117,7 +1117,7 @@ $threadlist = $threadlist.Substring(0,$threadlist.Length-1)
 
 $json += @"
 {
-    "time"     :   "$timestamp",
+    "time"      :   "$timestamp",
     "host"      :   "$ComputerName",
     "hostip"    :   "$ComputerIP",
     "name"      :   "$Name",
@@ -1132,7 +1132,7 @@ $json += @"
 
 $json += @"
 {
-    "time"     :   "$timestamp",
+    "time"      :   "$timestamp",
     "host"      :   "$ComputerName",
     "hostip"    :   "$ComputerIP",
     "name"      :   "$servicename",
