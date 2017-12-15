@@ -54,9 +54,7 @@ $intro = @'
                                                                                    __/ |
                                                                                   |___/ 
 '@
-    #Write-Host $intro -ForegroundColor Cyan
-    #Write-Host "[!] I'm here to detect running threads..." -ForegroundColor Cyan
-    #Write-Host ""
+    Write-Host $intro -ForegroundColor Cyan
 
     $ScriptBlock = {
         Param (
