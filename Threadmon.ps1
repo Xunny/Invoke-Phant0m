@@ -1,7 +1,7 @@
 function Threadmonitoring() {
 <#
 .SYNOPSIS
-This script walks through thread stacks of the Event Log Service process (more specifically svchost.exe) with the purpose to monitor the Event Log Service Threads. Moreover, with this script you'll be able to gain extra knowledge of the Event Log threads when they're killed or suspended.
+This script walks through thread stacks of the Event Log Service process (more specifically svchost.exe) with the purpose to monitor the Event Log Service Threads. Moreover, with this script, you'll be able to gain extra knowledge of the Event Log threads when they're killed or suspended. 
 
 .DESCRIPTION
 This script using Jesse Davis (https://github.com/secabstraction) Get-ProcessTrace.ps1 scripts as an
@@ -1091,8 +1091,16 @@ $intro = @'
                 for ($i = 0; $i -lt $ThreadIds.Count; $i++) {
                     #$threadlist = "$($threadlist), $($array[$i])"
                     $TMappedFilesEscapedSlash = $($TMappedFiles[$i]).replace('\','\\')
+
 $threadlist += @"
-{"threadid":"$($ThreadIds[$i])","processid":"$($TProcessIds[$i])","waitreason":"$($tWaitReason[$i])","addrpc":"$($TAddrPCs[$i])","symbol":"$($TSymbols[$i])","mappedfile":"$TMappedFilesEscapedSlash","addrreturn":"$($TAddrReturns[$i])"},
+{
+    "threadid"     :   "$($ThreadIds[$i])",
+    "processid"     :   "$($TProcessIds[$i])",
+    "waitreason"    :   "$($tWaitReason[$i])",
+    "addrpc"        :   "$($TAddrPCs[$i])",
+    "symbol"        :   "$($TSymbols[$i])",
+    "mappedfile"    :   "$TMappedFilesEscapedSlash",
+    "addrreturn"    :   "$($TAddrReturns[$i])"},
 "@
                 
                 }# End of thread loop
@@ -1101,29 +1109,43 @@ $threadlist = $threadlist.Substring(0,$threadlist.Length-1)
 
             }
 
-$name = ($service | %{$_.Name})
-$ProcessId = ($service | %{$_.ProcessId})
-$StartMode = ($service | %{$_.StartMode})
-$State = ($service | %{$_.State})
-$Status = ($service | %{$_.Status})
+                $name = ($service | %{$_.Name})
+                $ProcessId = ($service | %{$_.ProcessId})
+                $StartMode = ($service | %{$_.StartMode})
+                $State = ($service | %{$_.State})
+                $Status = ($service | %{$_.Status})
+
 $json += @"
-{"time":"$timestamp","host":"$ComputerName","hostip":"$ComputerIP","name":"$Name","processid":"$ProcessId","startmode":"$StartMode","state":"$State","status":"$Status","threads":[$threadlist]}
--ENDOFSERVICE-
+{
+    "time"     :   "$timestamp",
+    "host"      :   "$ComputerName",
+    "hostip"    :   "$ComputerIP",
+    "name"      :   "$Name",
+    "processid" :   "$ProcessId",
+    "startmode" :   "$StartMode",
+    "state"     :   "$State",
+    "status"    :   "$Status",
+    "threads"   :   [$threadlist]},
 "@
 
         } else {
 
 $json += @"
-{"time":"$timestamp","host"   :"$ComputerName","hostip" :"$ComputerIP","name"   :"$servicename","state"  :"unable to get current service state","threads":[]}
--ENDOFSERVICE-
+{
+    "time"     :   "$timestamp",
+    "host"      :   "$ComputerName",
+    "hostip"    :   "$ComputerIP",
+    "name"      :   "$servicename",
+    "state"     :   "unable to get current service state",
+    "threads"   :   []},
 "@
        
         }
 
     }# End of service loop
 
-    $json = $json.Substring(0,$json.Length-14)
-    Write-Host "$json"
+    $json = $json.Substring(0,$json.Length-1)
+    Write-Host "[$json]"
     [GC]::Collect()
 }
 
