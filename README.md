@@ -1,4 +1,4 @@
-# Threadmonitor
+# TA-Threadmonitor add-on for Splunk
 This script walks through thread stacks of the Event Log Service process (more specifically svchost.exe) with the purpose to monitor the Event Log Service Threads. Moreover, with this script, you'll be able to gain extra knowledge of the Event Log threads when they're killed or suspended. 
 
 I've edited the Phant0m script which is created by Halil DALABASMAZ (https://github.com/hlldz, https://twitter.com/hlldz).
@@ -25,7 +25,7 @@ Example args:
 3. Monitor 1 Servicename with all threads
 <br />args = "Servicename"
 
-NOTE: threadname is already wildcarded before and after the given threadname
+NOTE: the threadname is already wildcarded before and after the given threadname
 
 OUTPUT: JSON
 
