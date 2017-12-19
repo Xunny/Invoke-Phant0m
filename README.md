@@ -25,7 +25,7 @@ Example args:
 3. Monitor 1 Servicename with all threads
 <br />args = "Servicename"
 
-NOTE: the threadname is already wildcarded before and after the given threadname
+NOTE: the threadname is already wildcarded before and after the given threadname. However, servicenam isn't.
 
 OUTPUT: JSON
 
