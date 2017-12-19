@@ -17,7 +17,7 @@ You can change the last line in Threadmon.ps1 and change the function arguments 
 
 Threadmonitoring(args)
 
-Example args:
+Example args (case insensitive):
 1. Monitor 1 servicename with 1 threadname
 <br />args = "Servicename : Threadname"
 2. Monitor multiple servicenames with a threadname
@@ -25,7 +25,7 @@ Example args:
 3. Monitor 1 Servicename with all threads
 <br />args = "Servicename"
 
-NOTE: the threadname is already wildcarded before and after the given threadname. However, servicenam isn't.
+NOTE: The threadname is already wildcarded before and after the given threadname. However, servicename isn't wildcarded.
 
 OUTPUT: JSON
 
